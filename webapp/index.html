@@ -1,0 +1,309 @@
+
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#10251d">
+
+    <title>LEVIN — Home & Christmas</title>
+
+    <link rel="stylesheet" href="style.css">
+    <script src="https://telegram.org/js/telegram-web-app.js"></script>
+</head>
+
+<body>
+
+<div class="app">
+
+    <!-- HEADER -->
+
+    <header class="header">
+        <div class="brand">
+            <div class="brand-logo">L</div>
+            <div>
+                <h1>LEVIN</h1>
+                <span>HOME & CHRISTMAS</span>
+            </div>
+        </div>
+
+        <button class="header-button"
+                aria-label="Корзина"
+                onclick="openCart()">
+            ♡
+        </button>
+    </header>
+
+    <main>
+
+        <!-- HERO -->
+
+        <section class="hero">
+            <div class="hero-content">
+                <span class="hero-label">✨ НОВОГОДНЯЯ КОЛЛЕКЦИЯ</span>
+
+                <h2>
+                    Создай<br>
+                    атмосферу<br>
+                    праздника
+                </h2>
+
+                <p>
+                    Всё для уютного дома<br>
+                    и волшебного Нового года.
+                </p>
+
+                <button class="hero-button" onclick="scrollToCatalog()">
+                    Смотреть каталог →
+                </button>
+            </div>
+        </section>
+
+        <!-- CATEGORIES -->
+
+        <section class="categories section">
+            <div class="section-heading">
+                <div>
+                    <span class="eyebrow">ВЫБИРАЙ СВОЁ</span>
+                    <h2>Категории</h2>
+                </div>
+            </div>
+
+            <div class="category-grid">
+
+                <button class="category-card" onclick="filterCategory('newyear')">
+                    <span class="category-icon">🎄</span>
+                    <span>Новый год</span>
+                </button>
+
+                <button class="category-card" onclick="filterCategory('home')">
+                    <span class="category-icon">🏠</span>
+                    <span>Для дома</span>
+                </button>
+
+                <button class="category-card" onclick="filterCategory('kitchen')">
+                    <span class="category-icon">🍽️</span>
+                    <span>Кухня</span>
+                </button>
+
+                <button class="category-card" onclick="filterCategory('gifts')">
+                    <span class="category-icon">🎁</span>
+                    <span>Подарки</span>
+                </button>
+
+            </div>
+        </section>
+
+        <!-- PRODUCTS -->
+
+        <section class="products section" id="catalog">
+
+            <div class="section-heading">
+                <div>
+                    <span class="eyebrow">НАШ ВЫБОР</span>
+                    <h2>Популярные товары</h2>
+                </div>
+            </div>
+
+            <div class="product-grid" id="productGrid">
+                <!-- Товары загружаются через JavaScript -->
+            </div>
+
+        </section>
+
+    </main>
+
+    <!-- CART MODAL -->
+
+    <div class="cart-overlay" id="cartOverlay"
+         onclick="if(event.target === this) closeCart()">
+
+        <div class="cart-modal">
+
+            <div class="cart-header">
+                <h2>Моя корзина</h2>
+                <button onclick="closeCart()">✕</button>
+            </div>
+
+            <div id="cartItems" class="cart-items"></div>
+
+            <div class="cart-empty" id="cartEmpty">
+                <span>🛍️</span>
+                <h3>Корзина пока пуста</h3>
+                <p>Добавьте товары из нашего каталога</p>
+            </div>
+
+            <div class="cart-summary" id="cartSummary">
+
+                <div class="cart-total">
+                    <span>Итого:</span>
+                    <strong id="cartTotal">0 ₸</strong>
+                </div>
+
+                <button class="checkout-button" onclick="checkout()">
+                    Оформить заказ →
+                </button>
+
+            </div>
+
+        </div>
+    </div>
+
+    <!-- CHECKOUT MODAL -->
+
+    <div class="checkout-overlay" id="checkoutOverlay"
+         onclick="if(event.target === this) closeCheckout()">
+
+        <div class="checkout-modal">
+
+            <div class="checkout-header">
+
+                <div>
+                    <span class="eyebrow">LEVIN • HOME & CHRISTMAS</span>
+                    <h2>Оформление заказа</h2>
+                    <p>Заполните данные для доставки</p>
+                </div>
+
+                <button type="button" onclick="closeCheckout()">✕</button>
+
+            </div>
+
+            <form id="checkoutForm">
+
+                <h3>Контактные данные</h3>
+
+                <label for="customerName">Ваше имя *</label>
+                <input
+                    type="text"
+                    id="customerName"
+                    placeholder="Как к вам обращаться?"
+                    required
+                    maxlength="80"
+                >
+
+                <label for="customerPhone">Номер телефона *</label>
+                <input
+                    type="tel"
+                    id="customerPhone"
+                    placeholder="+7 (___) ___-__-__"
+                    required
+                    maxlength="20"
+                >
+
+                <h3>Адрес доставки</h3>
+
+                <label for="customerStreet">Улица и номер дома *</label>
+                <input
+                    type="text"
+                    id="customerStreet"
+                    placeholder="Например, Абая 50"
+                    required
+                    maxlength="150"
+                >
+
+                <div class="checkout-row">
+
+                    <div>
+                        <label for="customerApartment">Квартира</label>
+                        <input
+                            type="text"
+                            id="customerApartment"
+                            placeholder="№ квартиры"
+                            maxlength="20"
+                        >
+                    </div>
+
+                    <div>
+                        <label for="customerFloor">Этаж</label>
+                        <input
+                            type="text"
+                            id="customerFloor"
+                            placeholder="Этаж"
+                            maxlength="10"
+                        >
+                    </div>
+
+                </div>
+
+                <label for="customerEntrance">Подъезд</label>
+                <input
+                    type="text"
+                    id="customerEntrance"
+                    placeholder="Номер подъезда"
+                    maxlength="10"
+                >
+
+                <h3>Способ связи</h3>
+
+                <select id="contactMethod" required>
+                    <option value="Звонок">Позвонить</option>
+                    <option value="WhatsApp">Написать в WhatsApp</option>
+                </select>
+
+                <label for="customerComment">Комментарий к заказу</label>
+                <textarea
+                    id="customerComment"
+                    placeholder="Дополнительные пожелания..."
+                    rows="3"
+                    maxlength="500"
+                ></textarea>
+
+                <div class="checkout-order-total">
+                    <span>Итого к оплате:</span>
+                    <strong id="checkoutTotal">0 ₸</strong>
+                </div>
+
+                <button type="submit" class="checkout-submit">
+                    Подтвердить заказ →
+                </button>
+
+                <p class="checkout-note">
+                    После оформления наш администратор свяжется
+                    с вами для подтверждения заказа.
+                </p>
+
+            </form>
+
+        </div>
+    </div>
+
+    <!-- FOOTER -->
+
+    <footer class="footer">
+        <div class="footer-logo">LEVIN</div>
+        <p>Создаём уют вместе с вами.</p>
+        <span>© 2026 LEVIN</span>
+    </footer>
+
+    <!-- BOTTOM NAVIGATION -->
+
+    <nav class="bottom-nav">
+
+        <button class="nav-item active" onclick="scrollToTop()">
+            <span>⌂</span>
+            Главная
+        </button>
+
+        <button class="nav-item" onclick="scrollToCatalog()">
+            <span>▦</span>
+            Каталог
+        </button>
+
+        <button class="nav-item" onclick="openCart()">
+            <span>🛍</span>
+            Корзина
+        </button>
+
+        <button class="nav-item" onclick="contactAdmin()">
+            <span>☏</span>
+            Связь
+        </button>
+
+    </nav>
+
+</div>
+
+<script src="app.js"></script>
+
+</body>
+</html>
