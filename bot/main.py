@@ -16,6 +16,12 @@ from pydantic import BaseModel, Field
 from bot.config import BOT_TOKEN, ADMIN_ID
 
 app = FastAPI(title="LEVIN Shop API")
+from bot.telegram_admin import start_bot
+
+
+@app.on_event("startup")
+def startup_event():
+    start_bot()
 
 # Разрешаем запросы от Mini App
 app.add_middleware(
