@@ -5,7 +5,6 @@ let cart = [];
 const productGrid = document.getElementById("productGrid");
 
 // АДРЕС СЕРВЕРА
-// После публикации на Railway вставим сюда настоящий URL.
 const API_URL = "https://YOUR-RAILWAY-DOMAIN";
 
 // TELEGRAM MINI APP
@@ -15,6 +14,9 @@ if (tg) {
     tg.ready();
     tg.expand();
 }
+
+// КОНТАКТ АДМИНИСТРАТОРА
+const ADMIN_URL = "https://t.me/toxicalien21";
 
 // ЗАГРУЗКА ТОВАРОВ
 
@@ -265,17 +267,13 @@ checkoutForm.addEventListener("submit", async function(event) {
 
     const order = {
         initData: tg.initData,
-
         name: document.getElementById("customerName").value.trim(),
         phone: document.getElementById("customerPhone").value.trim(),
         street: document.getElementById("customerStreet").value.trim(),
-
         apartment: document.getElementById("customerApartment").value.trim(),
         floor: document.getElementById("customerFloor").value.trim(),
         entrance: document.getElementById("customerEntrance").value.trim(),
-
         contact_method: document.getElementById("contactMethod").value,
-
         comment: document.getElementById("customerComment").value.trim(),
 
         items: cart.map(item => ({
@@ -312,7 +310,7 @@ checkoutForm.addEventListener("submit", async function(event) {
         const successMessage =
             `Ваш заказ №${result.order_number} успешно отправлен!`;
 
-        if (tg.showPopup) {
+        if (tg && tg.showPopup) {
             tg.showPopup({
                 title: "Спасибо за заказ! 🎄",
                 message: successMessage,
@@ -335,7 +333,11 @@ checkoutForm.addEventListener("submit", async function(event) {
 // СВЯЗЬ С АДМИНИСТРАТОРОМ
 
 function contactAdmin() {
-    alert("Контакт администратора подключим следующим этапом.");
+    if (tg && tg.openTelegramLink) {
+        tg.openTelegramLink(ADMIN_URL);
+    } else {
+        window.open(ADMIN_URL, "_blank");
+    }
 }
 
 // ЗАПУСК

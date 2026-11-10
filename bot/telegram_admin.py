@@ -14,11 +14,16 @@ from bot.database import (
 )
 
 
+# =====================================
+# BOT SETTINGS
+# =====================================
+
 bot = telebot.TeleBot(BOT_TOKEN)
 
 broadcast_mode = False
 
 SHOP_URL = "https://didar2007.github.io/levin-shop/"
+ADMIN_URL = "https://t.me/toxicalien21"
 
 
 def is_admin(message):
@@ -26,7 +31,7 @@ def is_admin(message):
 
 
 # =====================================
-# START — ПРИВЕТСТВИЕ И КАТАЛОГ
+# START COMMAND
 # =====================================
 
 @bot.message_handler(commands=["start"])
@@ -39,23 +44,76 @@ def start_command(message):
         user.username or ""
     )
 
-    keyboard = types.InlineKeyboardMarkup()
-
-    catalog_button = types.InlineKeyboardButton(
-        text="🛍 Открыть каталог",
-        web_app=types.WebAppInfo(url=SHOP_URL)
+    # Постоянная нижняя клавиатура
+    
+    # Постоянная нижняя клавиатура
+    bottom_keyboard = types.ReplyKeyboardMarkup(
+        resize_keyboard=True,
+        is_persistent=True,
+        row_width=2
     )
 
-    keyboard.add(catalog_button)
+    bottom_keyboard.add(
+        types.KeyboardButton(
+            text="🛍 Открыть каталог",
+            web_app=types.WebAppInfo(url=SHOP_URL)
+        ),
+        types.KeyboardButton(
+            text="💬 Связаться с нами"
+        )
+    )
+
+
+    # Кнопки приветственного сообщения
+    inline_keyboard = types.InlineKeyboardMarkup(
+        row_width=1
+    )
+
+    inline_keyboard.add(
+        types.InlineKeyboardButton(
+            text="🛍 Открыть каталог",
+            web_app=types.WebAppInfo(url=SHOP_URL)
+        ),
+        types.InlineKeyboardButton(
+            text="💬 Связаться с администратором",
+            url=ADMIN_URL
+        )
+    )
 
     bot.send_message(
         message.chat.id,
         "🎄 Добро пожаловать в LEVIN!\n\n"
         "Товары для уюта и праздничного настроения.\n\n"
-        "Нажми кнопку ниже, чтобы открыть наш каталог.",
-        reply_markup=keyboard
+        "Выбирай товары в каталоге или свяжись с нами, "
+        "если нужна помощь.",
+        reply_markup=inline_keyboard
     )
 
+    bot.send_message(
+        message.chat.id,
+        "Каталог всегда доступен по кнопке внизу 👇",
+        reply_markup=bottom_keyboard
+    )
+
+
+@bot.message_handler(
+    func=lambda message: message.text == "💬 Связаться с нами"
+)
+def contact_admin(message):
+    keyboard = types.InlineKeyboardMarkup()
+
+    keyboard.add(
+        types.InlineKeyboardButton(
+            text="💬 Написать администратору",
+            url=ADMIN_URL
+        )
+    )
+
+    bot.send_message(
+        message.chat.id,
+        "Если у тебя есть вопросы, напиши нам:",
+        reply_markup=keyboard
+    )
 
 # =====================================
 # ADMIN PANEL
@@ -67,7 +125,16 @@ def admin_command(message):
         return
 
     keyboard = types.ReplyKeyboardMarkup(
-        resize_keyboard=True
+        resize_keyboard=True,
+        is_persistent=True
+    )
+
+    # Каталог остаётся доступен администратору
+    keyboard.add(
+        types.KeyboardButton(
+            text="🛍 Открыть каталог",
+            web_app=types.WebAppInfo(url=SHOP_URL)
+        )
     )
 
     keyboard.add(
@@ -97,8 +164,7 @@ def cancel_command(message):
 
     bot.send_message(
         message.chat.id,
-        "Рассылка отменена.",
-        reply_markup=types.ReplyKeyboardRemove()
+        "Рассылка отменена."
     )
 
 
@@ -176,7 +242,8 @@ def broadcast_message(message):
 
     bot.send_message(
         ADMIN_ID,
-        f"🚀 Начинаю рассылку.\nПолучателей: {len(users)}"
+        f"🚀 Начинаю рассылку.\n"
+        f"Получателей: {len(users)}"
     )
 
     for (user_id,) in users:
