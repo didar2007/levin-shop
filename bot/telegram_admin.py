@@ -6,17 +6,28 @@ import telebot
 from telebot import types
 
 from bot.config import BOT_TOKEN, ADMIN_ID
-from bot.database import init_db, save_user, get_all_users, get_users_count
+from bot.database import (
+    init_db,
+    save_user,
+    get_all_users,
+    get_users_count
+)
 
 
 bot = telebot.TeleBot(BOT_TOKEN)
 
 broadcast_mode = False
 
+SHOP_URL = "https://didar2007.github.io/levin-shop/"
+
 
 def is_admin(message):
     return message.from_user.id == ADMIN_ID
 
+
+# =====================================
+# START — ПРИВЕТСТВИЕ И КАТАЛОГ
+# =====================================
 
 @bot.message_handler(commands=["start"])
 def start_command(message):
@@ -28,12 +39,27 @@ def start_command(message):
         user.username or ""
     )
 
+    keyboard = types.InlineKeyboardMarkup()
+
+    catalog_button = types.InlineKeyboardButton(
+        text="🛍 Открыть каталог",
+        web_app=types.WebAppInfo(url=SHOP_URL)
+    )
+
+    keyboard.add(catalog_button)
+
     bot.send_message(
         message.chat.id,
         "🎄 Добро пожаловать в LEVIN!\n\n"
-        "Открой каталог и выбери товары для своего дома."
+        "Товары для уюта и праздничного настроения.\n\n"
+        "Нажми кнопку ниже, чтобы открыть наш каталог.",
+        reply_markup=keyboard
     )
 
+
+# =====================================
+# ADMIN PANEL
+# =====================================
 
 @bot.message_handler(commands=["admin"])
 def admin_command(message):
@@ -56,6 +82,10 @@ def admin_command(message):
     )
 
 
+# =====================================
+# CANCEL BROADCAST
+# =====================================
+
 @bot.message_handler(commands=["cancel"])
 def cancel_command(message):
     global broadcast_mode
@@ -72,6 +102,10 @@ def cancel_command(message):
     )
 
 
+# =====================================
+# CLIENT COUNT
+# =====================================
+
 @bot.message_handler(
     func=lambda message: message.text == "👥 Количество клиентов"
 )
@@ -86,6 +120,10 @@ def clients_count(message):
         f"👥 Всего пользователей: {count}"
     )
 
+
+# =====================================
+# START BROADCAST
+# =====================================
 
 @bot.message_handler(
     func=lambda message: message.text == "📢 Рассылка"
@@ -105,6 +143,10 @@ def start_broadcast(message):
         "Для отмены отправь /cancel."
     )
 
+
+# =====================================
+# BROADCAST MESSAGE
+# =====================================
 
 @bot.message_handler(
     content_types=[
@@ -161,6 +203,10 @@ def broadcast_message(message):
         f"❌ Не удалось отправить: {failed}"
     )
 
+
+# =====================================
+# START BOT
+# =====================================
 
 def start_bot():
     init_db()
