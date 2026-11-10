@@ -5,7 +5,7 @@ let cart = [];
 const productGrid = document.getElementById("productGrid");
 
 // АДРЕС СЕРВЕРА
-const API_URL = "https://YOUR-RAILWAY-DOMAIN";
+const API_URL = "https://solely-framing-certification-sound.trycloudflare.com";
 
 // TELEGRAM MINI APP
 const tg = window.Telegram?.WebApp;
