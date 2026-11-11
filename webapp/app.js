@@ -6,8 +6,7 @@ const productGrid = document.getElementById("productGrid");
 const catalogTitle = document.getElementById("catalogTitle");
 
 // ВРЕМЕННЫЙ АДРЕС API
-const API_URL = "https://solely-framing-certification-sound.trycloudflare.com";
-
+const API_URL = "https://renaissance-implementing-diffs-constraint.trycloudflare.com";
 // TELEGRAM MINI APP
 const tg = window.Telegram?.WebApp;
 
