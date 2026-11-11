@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="theme-color" content="#10251d">
+    <meta name="theme-color" content="#000000">
 
     <title>LEVIN — Home & Christmas</title>
 
@@ -40,17 +40,16 @@
 
         <section class="hero">
             <div class="hero-content">
-                <span class="hero-label">✨ НОВОГОДНЯЯ КОЛЛЕКЦИЯ</span>
+                <span class="hero-label">✨ LEVIN COLLECTION</span>
 
                 <h2>
-                    Создай<br>
-                    атмосферу<br>
-                    праздника
+                    Уют начинается<br>
+                    с деталей
                 </h2>
 
                 <p>
-                    Всё для уютного дома<br>
-                    и волшебного Нового года.
+                    Красивые и полезные товары<br>
+                    для дома и праздника.
                 </p>
 
                 <button class="hero-button" onclick="scrollToCatalog()">
@@ -61,37 +60,51 @@
 
         <!-- CATEGORIES -->
 
-        <section class="categories section">
+        <section class="categories section" id="categories">
+
             <div class="section-heading">
                 <div>
                     <span class="eyebrow">ВЫБИРАЙ СВОЁ</span>
-                    <h2>Категории</h2>
+                    <h2>Каталог товаров</h2>
                 </div>
             </div>
 
             <div class="category-grid">
 
-                <button class="category-card" onclick="filterCategory('newyear')">
-                    <span class="category-icon">🎄</span>
-                    <span>Новый год</span>
+                <button
+                    class="category-card active"
+                    id="categoryNewyear"
+                    onclick="filterCategory('newyear')"
+                >
+                    <img
+                        src="https://images.unsplash.com/photo-1543589077-47d81606c1bf?w=900"
+                        alt="Новогодние украшения"
+                    >
+                    <span>🎄 Новый год</span>
                 </button>
 
-                <button class="category-card" onclick="filterCategory('home')">
-                    <span class="category-icon">🏠</span>
-                    <span>Для дома</span>
-                </button>
-
-                <button class="category-card" onclick="filterCategory('kitchen')">
-                    <span class="category-icon">🍽️</span>
-                    <span>Кухня</span>
-                </button>
-
-                <button class="category-card" onclick="filterCategory('gifts')">
-                    <span class="category-icon">🎁</span>
-                    <span>Подарки</span>
+                <button
+                    class="category-card"
+                    id="categoryHome"
+                    onclick="filterCategory('home')"
+                >
+                    <img
+                        src="https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?w=900"
+                        alt="Товары для дома"
+                    >
+                    <span>🏠 Для дома</span>
                 </button>
 
             </div>
+
+            <button
+                class="all-products-button"
+                id="allProductsButton"
+                onclick="filterCategory('all')"
+            >
+                Все товары
+            </button>
+
         </section>
 
         <!-- PRODUCTS -->
@@ -101,7 +114,7 @@
             <div class="section-heading">
                 <div>
                     <span class="eyebrow">НАШ ВЫБОР</span>
-                    <h2>Популярные товары</h2>
+                    <h2 id="catalogTitle">🎄 Новогодние товары</h2>
                 </div>
             </div>
 

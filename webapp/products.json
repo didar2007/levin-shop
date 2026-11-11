@@ -2,38 +2,587 @@
 [
   {
     "id": 1,
-    "name": "Новогодний декор",
-    "description": "Украшение для праздничного интерьера",
-    "price": 3500,
+    "name": "Новогодний венок «Снежное кружево», 35 см",
+    "description": "Новогодний венок для праздничного оформления дома",
+    "price": 2990,
     "category": "newyear",
-    "image": "https://images.unsplash.com/photo-1543589077-47d81606c1bf?w=600",
+    "image": "images/product-1.jpg",
     "stock": 10
   },
   {
     "id": 2,
-    "name": "Праздничные украшения",
-    "description": "Создай атмосферу Нового года",
-    "price": 2500,
+    "name": "Новогодний венок «Снежное кружево», 43 см",
+    "description": "Декоративный венок для новогоднего интерьера",
+    "price": 4490,
     "category": "newyear",
-    "image": "https://images.unsplash.com/photo-1512389142860-9c449e58a543?w=600",
-    "stock": 15
+    "image": "images/product-2.jpg",
+    "stock": 10
   },
   {
     "id": 3,
-    "name": "Декор для дома",
-    "description": "Стильное дополнение интерьера",
-    "price": 4200,
-    "category": "home",
-    "image": "https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?w=600",
-    "stock": 8
+    "name": "Ёлочное украшение «Ретро», мультиколор",
+    "description": "Стекло и полиэстер, 1 шт.",
+    "price": 2490,
+    "category": "newyear",
+    "image": "images/product-3.jpg",
+    "stock": 10
   },
   {
     "id": 4,
-    "name": "Аксессуары для кухни",
-    "description": "Практичные вещи для вашего дома",
-    "price": 2800,
-    "category": "kitchen",
-    "image": "https://images.unsplash.com/photo-1556911220-e15b29be8c8f?w=600",
-    "stock": 12
+    "name": "Упаковочная бумага «Снежное кружево», 100 × 70 см",
+    "description": "Бумага для оформления подарков, 1 шт.",
+    "price": 1490,
+    "category": "newyear",
+    "image": "images/product-4.jpg",
+    "stock": 10
+  },
+  {
+    "id": 5,
+    "name": "Жидкое мыло Milana Selective, 1000 мл",
+    "description": "Аромат чёрной смородины, чайной розы и сандала",
+    "price": 2190,
+    "category": "home",
+    "image": "images/product-5.jpg",
+    "stock": 10
+  },
+  {
+    "id": 6,
+    "name": "Литая новогодняя ёлка «Снежное кружево», 25 см",
+    "description": "Настольная декоративная ёлка",
+    "price": 3490,
+    "category": "newyear",
+    "image": "images/product-6.jpg",
+    "stock": 10
+  },
+  {
+    "id": 7,
+    "name": "Декоративная подушка в форме банта, 36 × 40 см",
+    "description": "Мягкий акцент для интерьера",
+    "price": 4290,
+    "category": "home",
+    "image": "images/product-7.jpg",
+    "stock": 10
+  },
+  {
+    "id": 8,
+    "name": "Refine пена-очиститель",
+    "description": "Бесцветный очиститель",
+    "price": 1190,
+    "category": "home",
+    "image": "images/product-8.jpg",
+    "stock": 10
+  },
+  {
+    "id": 9,
+    "name": "Набор стеклянных мисок JZ-ZM3580, 2 шт.",
+    "description": "Набор мисок из стекла",
+    "price": 5490,
+    "category": "home",
+    "image": "images/product-9.jpg",
+    "stock": 10
+  },
+  {
+    "id": 10,
+    "name": "Декоративная свеча «Ёлочка» с блёстками, 23,5 см",
+    "description": "Белый и серебристый цвета",
+    "price": 1590,
+    "category": "newyear",
+    "image": "images/product-10.jpg",
+    "stock": 10
+  },
+  {
+    "id": 11,
+    "name": "Вращающийся коричневый поднос",
+    "description": "Поднос для сервировки",
+    "price": 3490,
+    "category": "home",
+    "image": "images/product-11.jpg",
+    "stock": 10
+  },
+  {
+    "id": 12,
+    "name": "Бумажные полотенца SOFFIONE Strong",
+    "description": "1 шт.",
+    "price": 1290,
+    "category": "home",
+    "image": "images/product-12.jpg",
+    "stock": 10
+  },
+  {
+    "id": 13,
+    "name": "Новогодний шар «Волшебный», 9,5 см",
+    "description": "Декоративное ёлочное украшение",
+    "price": 2490,
+    "category": "newyear",
+    "image": "images/product-13.jpg",
+    "stock": 10
+  },
+  {
+    "id": 14,
+    "name": "Статуэтка «Дед Мороз», 32 см",
+    "description": "Пластик",
+    "price": 8490,
+    "category": "newyear",
+    "image": "images/product-14.jpg",
+    "stock": 10
+  },
+  {
+    "id": 15,
+    "name": "Бумага для выпечки 46467",
+    "description": "Бумага для приготовления выпечки",
+    "price": 1190,
+    "category": "home",
+    "image": "images/product-15.jpg",
+    "stock": 10
+  },
+  {
+    "id": 16,
+    "name": "Новогодняя ёлка «Снежное кружево», 34,5 см",
+    "description": "Декоративная ёлка",
+    "price": 3390,
+    "category": "newyear",
+    "image": "images/product-16.jpg",
+    "stock": 10
+  },
+  {
+    "id": 17,
+    "name": "Стеклянный чайник 850-235, 1,1 л",
+    "description": "Чайник из стекла",
+    "price": 5490,
+    "category": "home",
+    "image": "images/product-17.jpg",
+    "stock": 10
+  },
+  {
+    "id": 18,
+    "name": "Столовый сервиз «Снежное кружево» 57967, 2 в 1",
+    "description": "Столовый сервиз",
+    "price": 4490,
+    "category": "home",
+    "image": "images/product-18.jpg",
+    "stock": 10
+  },
+  {
+    "id": 19,
+    "name": "Деревянная прямоугольная маслёнка 5036443",
+    "description": "Маслёнка из дерева, 1 шт.",
+    "price": 3190,
+    "category": "home",
+    "image": "images/product-19.jpg",
+    "stock": 10
+  },
+  {
+    "id": 20,
+    "name": "Декоративный домик, 15 см",
+    "description": "Украшение для новогоднего интерьера",
+    "price": 4490,
+    "category": "newyear",
+    "image": "images/product-20.jpg",
+    "stock": 10
+  },
+  {
+    "id": 21,
+    "name": "Ёлочная верхушка «Звезда»",
+    "description": "Наконечник для новогодней ёлки",
+    "price": 1890,
+    "category": "newyear",
+    "image": "images/product-21.jpg",
+    "stock": 10
+  },
+  {
+    "id": 22,
+    "name": "Светящаяся декорация «Новогодний уют», 12 см",
+    "description": "Новогоднее интерьерное украшение",
+    "price": 8990,
+    "category": "newyear",
+    "image": "images/product-22.jpg",
+    "stock": 10
+  },
+  {
+    "id": 23,
+    "name": "Деревянные сани, зелёные",
+    "description": "Декоративные сани, 1 шт.",
+    "price": 1090,
+    "category": "newyear",
+    "image": "images/product-23.jpg",
+    "stock": 10
+  },
+  {
+    "id": 24,
+    "name": "Влагозащищённый навесной замок, 50 × 140 мм",
+    "description": "Перфорированный корпус",
+    "price": 3990,
+    "category": "home",
+    "image": "images/product-24.jpg",
+    "stock": 10
+  },
+  {
+    "id": 25,
+    "name": "Мягкая игрушка «Мишка», 41 см",
+    "description": "Мягкая игрушка, мультиколор",
+    "price": 7490,
+    "category": "home",
+    "image": "images/product-25.jpg",
+    "stock": 10
+  },
+  {
+    "id": 26,
+    "name": "Деревянная разделочная доска 848485883",
+    "description": "Разделочная доска, 1 шт.",
+    "price": 3290,
+    "category": "home",
+    "image": "images/product-26.jpg",
+    "stock": 10
+  },
+  {
+    "id": 27,
+    "name": "Новогодние бусы, 4 м",
+    "description": "Украшение для ёлки и интерьера, мультиколор",
+    "price": 1090,
+    "category": "newyear",
+    "image": "images/product-27.jpg",
+    "stock": 10
+  },
+  {
+    "id": 28,
+    "name": "Пластиковый контейнер для еды",
+    "description": "Контейнер из полипропилена",
+    "price": 4590,
+    "category": "home",
+    "image": "images/product-28.jpg",
+    "stock": 10
+  },
+  {
+    "id": 29,
+    "name": "Механический штопор 747855959",
+    "description": "Аксессуар для кухни",
+    "price": 1590,
+    "category": "home",
+    "image": "images/product-29.jpg",
+    "stock": 10
+  },
+  {
+    "id": 30,
+    "name": "Подставка O'Kitchen 5092951",
+    "description": "Нержавеющая сталь, 1 шт.",
+    "price": 2090,
+    "category": "home",
+    "image": "images/product-30.jpg",
+    "stock": 10
+  },
+  {
+    "id": 31,
+    "name": "Стеклянный подсвечник «Ёлка»",
+    "description": "Модель 30047116_766142008",
+    "price": 2390,
+    "category": "newyear",
+    "image": "images/product-31.jpg",
+    "stock": 10
+  },
+  {
+    "id": 32,
+    "name": "Статуэтка «Снегурочка», 24 см",
+    "description": "Полиэстер",
+    "price": 5990,
+    "category": "newyear",
+    "image": "images/product-32.jpg",
+    "stock": 10
+  },
+  {
+    "id": 33,
+    "name": "Коричневый поднос O'Kitchen 78896",
+    "description": "Поднос для сервировки",
+    "price": 3690,
+    "category": "home",
+    "image": "images/product-33.jpg",
+    "stock": 10
+  },
+  {
+    "id": 34,
+    "name": "Новогодняя снежинка «Снежное кружево», 34 см",
+    "description": "Подвесное украшение",
+    "price": 1590,
+    "category": "newyear",
+    "image": "images/product-34.jpg",
+    "stock": 10
+  },
+  {
+    "id": 35,
+    "name": "Корзина «Дэйзи», 25 × 25 × 10 см",
+    "description": "Хлопок и сталь",
+    "price": 4490,
+    "category": "home",
+    "image": "images/product-35.jpg",
+    "stock": 10
+  },
+  {
+    "id": 36,
+    "name": "Набор ёлочных украшений «Снежное кружево», 3 шт.",
+    "description": "Декоративные украшения для ёлки",
+    "price": 1590,
+    "category": "newyear",
+    "image": "images/product-36.jpg",
+    "stock": 10
+  },
+  {
+    "id": 37,
+    "name": "Декорация на телескопических ножках, 41 см",
+    "description": "Новогоднее интерьерное украшение",
+    "price": 8490,
+    "category": "newyear",
+    "image": "images/product-37.jpg",
+    "stock": 10
+  },
+  {
+    "id": 38,
+    "name": "Круглая розетка 316971204",
+    "description": "Нержавеющая сталь, 1 шт.",
+    "price": 1190,
+    "category": "home",
+    "image": "images/product-38.jpg",
+    "stock": 10
+  },
+  {
+    "id": 39,
+    "name": "Ароматическая свеча «Ёлочный шар», 9,5 см",
+    "description": "Красная свеча, 1 шт.",
+    "price": 3290,
+    "category": "newyear",
+    "image": "images/product-39.jpg",
+    "stock": 10
+  },
+  {
+    "id": 40,
+    "name": "Набор сосулек «Снежное кружево», 6 шт.",
+    "description": "Полиэстер и полистирол, прозрачные",
+    "price": 1490,
+    "category": "newyear",
+    "image": "images/product-40.jpg",
+    "stock": 10
+  },
+  {
+    "id": 41,
+    "name": "Сборная модель «Классическая карусель»",
+    "description": "Музыкальная сборная модель",
+    "price": 7990,
+    "category": "home",
+    "image": "images/product-41.jpg",
+    "stock": 10
+  },
+  {
+    "id": 42,
+    "name": "Деревянная новогодняя гирлянда, 7 см",
+    "description": "Декоративная гирлянда",
+    "price": 2890,
+    "category": "newyear",
+    "image": "images/product-42.jpg",
+    "stock": 10
+  },
+  {
+    "id": 43,
+    "name": "Мешки для мусора, 360 л, 7 шт.",
+    "description": "Большие мусорные мешки",
+    "price": 3890,
+    "category": "home",
+    "image": "images/product-43.jpg",
+    "stock": 10
+  },
+  {
+    "id": 44,
+    "name": "Текстильная овечка «Снежное кружево»",
+    "description": "Белый и красный цвета, 1 шт.",
+    "price": 3590,
+    "category": "newyear",
+    "image": "images/product-44.jpg",
+    "stock": 10
+  },
+  {
+    "id": 45,
+    "name": "Новогодняя ветка «Снежное кружево», 30 см",
+    "description": "Декоративная ветка",
+    "price": 1490,
+    "category": "newyear",
+    "image": "images/product-45.jpg",
+    "stock": 10
+  },
+  {
+    "id": 46,
+    "name": "Стеклянная бутылка Oil Bottle 630",
+    "description": "Бутылка для масла",
+    "price": 1490,
+    "category": "home",
+    "image": "images/product-46.jpg",
+    "stock": 10
+  },
+  {
+    "id": 47,
+    "name": "Бумажная декорация «Звезда», 40 см",
+    "description": "Светло-бежевая бумажная звезда, 1 шт.",
+    "price": 2590,
+    "category": "newyear",
+    "image": "images/product-47.jpg",
+    "stock": 10
+  },
+  {
+    "id": 48,
+    "name": "Детские влажные полотенца XXL, 60 шт.",
+    "description": "Влажные полотенца большого размера",
+    "price": 1650,
+    "category": "home",
+    "image": "images/product-48.jpg",
+    "stock": 10
+  },
+  {
+    "id": 49,
+    "name": "Набор новогодних шаров «Снежное кружево», 6 шт.",
+    "description": "Красные шары из ПЭТ",
+    "price": 1550,
+    "category": "newyear",
+    "image": "images/product-49.jpg",
+    "stock": 10
+  },
+  {
+    "id": 50,
+    "name": "Влажные салфетки для автомобиля, 70 шт.",
+    "description": "Салфетки для ухода за автомобилем",
+    "price": 2990,
+    "category": "home",
+    "image": "images/product-50.jpg",
+    "stock": 10
+  },
+  {
+    "id": 51,
+    "name": "Детские влажные салфетки, 120 шт.",
+    "description": "Упаковка влажных салфеток",
+    "price": 4550,
+    "category": "home",
+    "image": "images/product-51.jpg",
+    "stock": 10
+  },
+  {
+    "id": 52,
+    "name": "Бумажная ёлка, 34,5 см",
+    "description": "Декоративная бумажная ёлка",
+    "price": 2590,
+    "category": "newyear",
+    "image": "images/product-52.jpg",
+    "stock": 10
+  },
+  {
+    "id": 53,
+    "name": "Сувенирная игрушка «Символ года»",
+    "description": "Новогодний сувенир",
+    "price": 1550,
+    "category": "newyear",
+    "image": "images/product-53.jpg",
+    "stock": 10
+  },
+  {
+    "id": 54,
+    "name": "Набор ёлочных шаров, 17 шт.",
+    "description": "Стекло и пластик, золотистый цвет",
+    "price": 2390,
+    "category": "newyear",
+    "image": "images/product-54.jpg",
+    "stock": 10
+  },
+  {
+    "id": 55,
+    "name": "Ёлочное украшение «Перламутр»",
+    "description": "Украшение «Снежное кружево»",
+    "price": 1590,
+    "category": "newyear",
+    "image": "images/product-55.jpg",
+    "stock": 10
+  },
+  {
+    "id": 56,
+    "name": "Пазл 17455 «Новогодняя мозаика»",
+    "description": "Кристаллический пазл, 4 детали",
+    "price": 3490,
+    "category": "newyear",
+    "image": "images/product-56.jpg",
+    "stock": 10
+  },
+  {
+    "id": 57,
+    "name": "Статуэтка «Дед Мороз», 32 см",
+    "description": "Полистоун",
+    "price": 7990,
+    "category": "newyear",
+    "image": "images/product-57.jpg",
+    "stock": 10
+  },
+  {
+    "id": 58,
+    "name": "Стальная овощерезка 17113346_561518814",
+    "description": "Кухонный аксессуар",
+    "price": 3290,
+    "category": "home",
+    "image": "images/product-58.jpg",
+    "stock": 10
+  },
+  {
+    "id": 59,
+    "name": "Стеклянная кружка 17113346_387532076, 460 мл",
+    "description": "Кружка из стекла",
+    "price": 3150,
+    "category": "home",
+    "image": "images/product-59.jpg",
+    "stock": 10
+  },
+  {
+    "id": 60,
+    "name": "Прямоугольная сырница 1852200492",
+    "description": "Пластик, 1 шт.",
+    "price": 7290,
+    "category": "home",
+    "image": "images/product-60.jpg",
+    "stock": 10
+  },
+  {
+    "id": 61,
+    "name": "Керамическая кружка «Снежное кружево», 340 мл",
+    "description": "Кружка для горячих напитков",
+    "price": 2990,
+    "category": "home",
+    "image": "images/product-61.jpg",
+    "stock": 10
+  },
+  {
+    "id": 62,
+    "name": "Набор красных новогодних шаров, 6 шт.",
+    "description": "Пластиковые ёлочные украшения",
+    "price": 1290,
+    "category": "newyear",
+    "image": "images/product-62.jpg",
+    "stock": 10
+  },
+  {
+    "id": 63,
+    "name": "Скалка 7819, 36 см",
+    "description": "Кухонная скалка",
+    "price": 399,
+    "category": "home",
+    "image": "images/product-63.jpg",
+    "stock": 10
+  },
+  {
+    "id": 64,
+    "name": "Кухонные ножницы 5021811",
+    "description": "Нержавеющая сталь, 1 шт.",
+    "price": 2190,
+    "category": "home",
+    "image": "images/product-64.jpg",
+    "stock": 10
+  },
+  {
+    "id": 66,
+    "name": "Новогодняя декорация «Снежное кружево», 45 см",
+    "description": "Декорация на телескопических выдвижных ножках",
+    "price": 5590,
+    "category": "newyear",
+    "image": "images/product-66.jpg",
+    "stock": 10
   }
 ]

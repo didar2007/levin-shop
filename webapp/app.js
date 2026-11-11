@@ -3,8 +3,9 @@ let products = [];
 let cart = [];
 
 const productGrid = document.getElementById("productGrid");
+const catalogTitle = document.getElementById("catalogTitle");
 
-// АДРЕС СЕРВЕРА
+// ВРЕМЕННЫЙ АДРЕС API
 const API_URL = "https://solely-framing-certification-sound.trycloudflare.com";
 
 // TELEGRAM MINI APP
@@ -18,8 +19,10 @@ if (tg) {
 // КОНТАКТ АДМИНИСТРАТОРА
 const ADMIN_URL = "https://t.me/toxicalien21";
 
-// ЗАГРУЗКА ТОВАРОВ
+// ТЕКУЩАЯ КАТЕГОРИЯ
+let currentCategory = "all";
 
+// ЗАГРУЗКА ТОВАРОВ
 async function loadProducts() {
     try {
         const response = await fetch("./products.json");
@@ -29,18 +32,29 @@ async function loadProducts() {
         }
 
         products = await response.json();
-        renderProducts(products);
+
+        filterCategory("all", false);
 
     } catch (error) {
-        console.error("Ошибка:", error);
+        console.error("Ошибка загрузки товаров:", error);
         productGrid.innerHTML = "<p>Не удалось загрузить товары.</p>";
     }
 }
 
 // ОТОБРАЖЕНИЕ ТОВАРОВ
-
 function renderProducts(items) {
     productGrid.innerHTML = "";
+
+    if (items.length === 0) {
+        productGrid.innerHTML = `
+            <div class="empty-products">
+                <span>🛍️</span>
+                <h3>Пока нет товаров</h3>
+                <p>Скоро здесь появятся новые товары LEVIN.</p>
+            </div>
+        `;
+        return;
+    }
 
     items.forEach(product => {
         const card = document.createElement("div");
@@ -65,7 +79,7 @@ function renderProducts(items) {
                         ${product.price.toLocaleString("ru-RU")} ₸
                     </span>
 
-                    <button class="add-button">+</button>
+                    <button class="add-button" type="button">+</button>
                 </div>
             </div>
         `;
@@ -78,19 +92,46 @@ function renderProducts(items) {
     });
 }
 
-// ФИЛЬТРАЦИЯ
+// ПЕРЕКЛЮЧЕНИЕ КАТЕГОРИЙ
+function filterCategory(category, shouldScroll = true) {
+    currentCategory = category;
 
-function filterCategory(category) {
-    const filtered = products.filter(
-        product => product.category === category
-    );
+    let filteredProducts;
 
-    renderProducts(filtered);
-    scrollToCatalog();
+    if (category === "all") {
+        filteredProducts = products;
+        catalogTitle.textContent = "Все товары LEVIN";
+    } else if (category === "newyear") {
+        filteredProducts = products.filter(
+            product => product.category === "newyear"
+        );
+        catalogTitle.textContent = "🎄 Новогодние товары";
+    } else if (category === "home") {
+        filteredProducts = products.filter(
+            product => product.category === "home"
+        );
+        catalogTitle.textContent = "🏠 Товары для дома";
+    } else {
+        filteredProducts = [];
+    }
+
+    // Активная категория
+    const newyearButton = document.getElementById("categoryNewyear");
+    const homeButton = document.getElementById("categoryHome");
+    const allButton = document.getElementById("allProductsButton");
+
+    newyearButton?.classList.toggle("active", category === "newyear");
+    homeButton?.classList.toggle("active", category === "home");
+    allButton?.classList.toggle("active", category === "all");
+
+    renderProducts(filteredProducts);
+
+    if (shouldScroll) {
+        scrollToCatalog();
+    }
 }
 
 // ДОБАВЛЕНИЕ В КОРЗИНУ
-
 function addToCart(productId) {
     const product = products.find(p => p.id === productId);
 
@@ -119,7 +160,6 @@ function addToCart(productId) {
 }
 
 // НАВИГАЦИЯ
-
 function scrollToCatalog() {
     document.getElementById("catalog").scrollIntoView({
         behavior: "smooth"
@@ -134,7 +174,6 @@ function scrollToTop() {
 }
 
 // КОРЗИНА
-
 function openCart() {
     document.getElementById("cartOverlay").classList.add("show");
     renderCart();
@@ -222,8 +261,7 @@ function removeFromCart(productId) {
     renderCart();
 }
 
-// ОФОРМЛЕНИЕ
-
+// ОФОРМЛЕНИЕ ЗАКАЗА
 function checkout() {
     if (cart.length === 0) {
         alert("Ваша корзина пуста");
@@ -247,7 +285,6 @@ function closeCheckout() {
 }
 
 // ОТПРАВКА ЗАКАЗА НА СЕРВЕР
-
 const checkoutForm = document.getElementById("checkoutForm");
 
 checkoutForm.addEventListener("submit", async function(event) {
@@ -331,7 +368,6 @@ checkoutForm.addEventListener("submit", async function(event) {
 });
 
 // СВЯЗЬ С АДМИНИСТРАТОРОМ
-
 function contactAdmin() {
     if (tg && tg.openTelegramLink) {
         tg.openTelegramLink(ADMIN_URL);
@@ -341,5 +377,4 @@ function contactAdmin() {
 }
 
 // ЗАПУСК
-
 loadProducts();
