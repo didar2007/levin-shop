@@ -7,6 +7,7 @@ const catalogTitle = document.getElementById("catalogTitle");
 
 // ВРЕМЕННЫЙ АДРЕС API
 const API_URL = "https://renaissance-implementing-diffs-constraint.trycloudflare.com";
+
 // TELEGRAM MINI APP
 const tg = window.Telegram?.WebApp;
 
@@ -114,7 +115,7 @@ function filterCategory(category, shouldScroll = true) {
         filteredProducts = [];
     }
 
-    // Активная категория
+    // АКТИВНАЯ КАТЕГОРИЯ
     const newyearButton = document.getElementById("categoryNewyear");
     const homeButton = document.getElementById("categoryHome");
     const allButton = document.getElementById("allProductsButton");
@@ -183,6 +184,19 @@ function closeCart() {
 }
 
 function renderCart() {
+    // ОБНОВЛЕНИЕ СЧЁТЧИКА КОРЗИНЫ
+    const cartBadge = document.getElementById("cartBadge");
+
+    const cartCount = cart.reduce(
+        (sum, item) => sum + item.quantity,
+        0
+    );
+
+    if (cartBadge) {
+        cartBadge.textContent = cartCount > 99 ? "99+" : cartCount;
+        cartBadge.classList.toggle("visible", cartCount > 0);
+    }
+
     const cartItems = document.getElementById("cartItems");
     const cartEmpty = document.getElementById("cartEmpty");
     const cartSummary = document.getElementById("cartSummary");
