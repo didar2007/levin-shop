@@ -5,8 +5,28 @@ let cart = [];
 const productGrid = document.getElementById("productGrid");
 const catalogTitle = document.getElementById("catalogTitle");
 
-// ВРЕМЕННЫЙ АДРЕС API
-const API_URL = "https://levin-shop-production.up.railway.app";const tg = window.Telegram?.WebApp;
+// ПОСТОЯННЫЙ BACKEND RAILWAY
+const API_URL = "https://levin-shop-production.up.railway.app";
+
+// TELEGRAM WEB APP
+function getTelegramWebApp() {
+    return window.Telegram?.WebApp || null;
+}
+
+function getTelegramInitData() {
+    const telegram = getTelegramWebApp();
+
+    if (!telegram) {
+        return "";
+    }
+
+    telegram.ready();
+    telegram.expand();
+
+    return telegram.initData || "";
+}
+
+const tg = getTelegramWebApp();
 
 if (tg) {
     tg.ready();
@@ -121,7 +141,6 @@ function filterCategory(category, shouldScroll = true) {
         filteredProducts = [];
     }
 
-    // АКТИВНАЯ КАТЕГОРИЯ
     const newyearButton = document.getElementById("categoryNewyear");
     const homeButton = document.getElementById("categoryHome");
     const sportButton = document.getElementById("categorySport");
@@ -192,7 +211,6 @@ function closeCart() {
 }
 
 function renderCart() {
-    // ОБНОВЛЕНИЕ СЧЁТЧИКА КОРЗИНЫ
     const cartBadge = document.getElementById("cartBadge");
 
     const cartCount = cart.reduce(
@@ -316,15 +334,21 @@ checkoutForm.addEventListener("submit", async function(event) {
         return;
     }
 
-    if (!tg || !tg.initData) {
-        alert("Оформление заказов доступно через Telegram.");
+    // Получаем актуальные данные Telegram при отправке
+    const initData = getTelegramInitData();
+
+    if (!initData) {
+        alert(
+            "Не удалось получить данные Telegram.\n\n" +
+            "Закройте каталог и откройте его повторно через кнопку Telegram."
+        );
         return;
     }
 
     const submitButton = checkoutForm.querySelector(".checkout-submit");
 
     const order = {
-        initData: tg.initData,
+        initData: initData,
         name: document.getElementById("customerName").value.trim(),
         phone: document.getElementById("customerPhone").value.trim(),
         street: document.getElementById("customerStreet").value.trim(),
@@ -357,7 +381,9 @@ checkoutForm.addEventListener("submit", async function(event) {
         const result = await response.json();
 
         if (!response.ok || !result.success) {
-            throw new Error(result.detail || "Не удалось оформить заказ");
+            throw new Error(
+                result.detail || "Не удалось оформить заказ"
+            );
         }
 
         cart = [];
@@ -368,8 +394,10 @@ checkoutForm.addEventListener("submit", async function(event) {
         const successMessage =
             `Ваш заказ №${result.order_number} успешно отправлен!`;
 
-        if (tg && tg.showPopup) {
-            tg.showPopup({
+        const telegram = getTelegramWebApp();
+
+        if (telegram && telegram.showPopup) {
+            telegram.showPopup({
                 title: "Спасибо за заказ! 🎄",
                 message: successMessage,
                 buttons: [{ type: "ok", text: "Отлично" }]
@@ -380,7 +408,14 @@ checkoutForm.addEventListener("submit", async function(event) {
 
     } catch (error) {
         console.error("Ошибка оформления:", error);
-        alert("Не удалось отправить заказ. Попробуйте ещё раз.");
+
+        alert(
+            error.message === "Telegram authorization required" ||
+            error.message === "Telegram data verification failed" ||
+            error.message === "Telegram session expired"
+                ? "Сессия Telegram устарела. Закройте каталог и откройте его снова."
+                : "Не удалось отправить заказ. Попробуйте ещё раз."
+        );
 
     } finally {
         submitButton.disabled = false;
@@ -390,8 +425,10 @@ checkoutForm.addEventListener("submit", async function(event) {
 
 // СВЯЗЬ С АДМИНИСТРАТОРОМ
 function contactAdmin() {
-    if (tg && tg.openTelegramLink) {
-        tg.openTelegramLink(ADMIN_URL);
+    const telegram = getTelegramWebApp();
+
+    if (telegram && telegram.openTelegramLink) {
+        telegram.openTelegramLink(ADMIN_URL);
     } else {
         window.open(ADMIN_URL, "_blank");
     }
