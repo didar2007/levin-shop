@@ -344,12 +344,19 @@ checkoutForm.addEventListener("submit", async function(event) {
     const initData = getTelegramInitData();
 
     if (!initData) {
-        alert(
-            "Не удалось получить данные Telegram.\n\n" +
-            "Закройте каталог и откройте его повторно через кнопку Telegram."
-        );
-        return;
-    }
+    const telegram = window.Telegram?.WebApp;
+
+    alert(
+        "ОШИБКА АВТОРИЗАЦИИ\n\n" +
+        "Telegram найден: " + (!!telegram) + "\n" +
+        "Версия WebApp: " + (telegram?.version || "нет") + "\n" +
+        "Платформа: " + (telegram?.platform || "нет") + "\n" +
+        "Длина initData: " + (telegram?.initData?.length || 0) + "\n" +
+        "URL: " + window.location.href
+    );
+
+    return;
+}
 
     const submitButton = checkoutForm.querySelector(".checkout-submit");
 
