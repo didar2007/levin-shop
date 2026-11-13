@@ -6,8 +6,7 @@ const productGrid = document.getElementById("productGrid");
 const catalogTitle = document.getElementById("catalogTitle");
 
 // ВРЕМЕННЫЙ АДРЕС API
-const API_URL = "https://views-fotos-transparency-nut.trycloudflare.com";
-const tg = window.Telegram?.WebApp;
+const API_URL = "https://levin-shop-production.up.railway.app";const tg = window.Telegram?.WebApp;
 
 if (tg) {
     tg.ready();
