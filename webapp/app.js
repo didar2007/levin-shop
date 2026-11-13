@@ -420,20 +420,13 @@ checkoutForm.addEventListener("submit", async function(event) {
         }
 
     } catch (error) {
-        console.error("Ошибка оформления:", error);
+    console.error("Ошибка оформления:", error);
+    alert("Ошибка оформления заказа:\n" + error.message);
 
-        alert(
-            error.message === "Telegram authorization required" ||
-            error.message === "Telegram data verification failed" ||
-            error.message === "Telegram session expired"
-                ? "Сессия Telegram устарела. Закройте каталог и откройте его снова."
-                : "Не удалось отправить заказ. Попробуйте ещё раз."
-        );
-
-    } finally {
-        submitButton.disabled = false;
-        submitButton.textContent = "Подтвердить заказ →";
-    }
+} finally {
+    submitButton.disabled = false;
+    submitButton.textContent = "Подтвердить заказ →";
+}
 });
 
 // СВЯЗЬ С АДМИНИСТРАТОРОМ
