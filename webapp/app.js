@@ -7,6 +7,7 @@ const catalogTitle = document.getElementById("catalogTitle");
 
 // ВРЕМЕННЫЙ АДРЕС API
 const API_URL = "https://enquiry-representing-fighting-mesh.trycloudflare.com";
+
 // TELEGRAM MINI APP
 const tg = window.Telegram?.WebApp;
 
@@ -100,16 +101,25 @@ function filterCategory(category, shouldScroll = true) {
     if (category === "all") {
         filteredProducts = products;
         catalogTitle.textContent = "Все товары LEVIN";
+
     } else if (category === "newyear") {
         filteredProducts = products.filter(
             product => product.category === "newyear"
         );
         catalogTitle.textContent = "🎄 Новогодние товары";
+
     } else if (category === "home") {
         filteredProducts = products.filter(
             product => product.category === "home"
         );
         catalogTitle.textContent = "🏠 Товары для дома";
+
+    } else if (category === "sport") {
+        filteredProducts = products.filter(
+            product => product.category === "sport"
+        );
+        catalogTitle.textContent = "🏋️ Спортивные товары";
+
     } else {
         filteredProducts = [];
     }
@@ -117,10 +127,12 @@ function filterCategory(category, shouldScroll = true) {
     // АКТИВНАЯ КАТЕГОРИЯ
     const newyearButton = document.getElementById("categoryNewyear");
     const homeButton = document.getElementById("categoryHome");
+    const sportButton = document.getElementById("categorySport");
     const allButton = document.getElementById("allProductsButton");
 
     newyearButton?.classList.toggle("active", category === "newyear");
     homeButton?.classList.toggle("active", category === "home");
+    sportButton?.classList.toggle("active", category === "sport");
     allButton?.classList.toggle("active", category === "all");
 
     renderProducts(filteredProducts);
