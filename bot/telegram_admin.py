@@ -45,8 +45,6 @@ def start_command(message):
     )
 
     # Постоянная нижняя клавиатура
-    
-    # Постоянная нижняя клавиатура
     bottom_keyboard = types.ReplyKeyboardMarkup(
         resize_keyboard=True,
         is_persistent=True,
@@ -55,14 +53,12 @@ def start_command(message):
 
     bottom_keyboard.add(
         types.KeyboardButton(
-            text="🛍 Открыть каталог",
-            web_app=types.WebAppInfo(url=SHOP_URL)
+            text="🛍 Открыть каталог"
         ),
         types.KeyboardButton(
             text="💬 Связаться с нами"
         )
     )
-
 
     # Кнопки приветственного сообщения
     inline_keyboard = types.InlineKeyboardMarkup(
@@ -96,6 +92,34 @@ def start_command(message):
     )
 
 
+# =====================================
+# OPEN CATALOG
+# =====================================
+
+@bot.message_handler(
+    func=lambda message: message.text == "🛍 Открыть каталог"
+)
+def open_catalog(message):
+    keyboard = types.InlineKeyboardMarkup()
+
+    keyboard.add(
+        types.InlineKeyboardButton(
+            text="🛍 Открыть каталог",
+            web_app=types.WebAppInfo(url=SHOP_URL)
+        )
+    )
+
+    bot.send_message(
+        message.chat.id,
+        "🎄 Открой каталог LEVIN:",
+        reply_markup=keyboard
+    )
+
+
+# =====================================
+# CONTACT ADMIN
+# =====================================
+
 @bot.message_handler(
     func=lambda message: message.text == "💬 Связаться с нами"
 )
@@ -115,6 +139,7 @@ def contact_admin(message):
         reply_markup=keyboard
     )
 
+
 # =====================================
 # ADMIN PANEL
 # =====================================
@@ -129,11 +154,10 @@ def admin_command(message):
         is_persistent=True
     )
 
-    # Каталог остаётся доступен администратору
+    # Каталог через сообщение с inline-кнопкой
     keyboard.add(
         types.KeyboardButton(
-            text="🛍 Открыть каталог",
-            web_app=types.WebAppInfo(url=SHOP_URL)
+            text="🛍 Открыть каталог"
         )
     )
 
