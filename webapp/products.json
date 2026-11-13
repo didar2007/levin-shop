@@ -589,7 +589,7 @@
     "id": 67,
     "name": "Пелёнки одноразовые Dailee, 60×90 см, 5 шт.",
     "description": "Одноразовые впитывающие пелёнки",
-    "price": 1600,
+    "price": 1590,
     "category": "home",
     "image": "images/product-67.jpg",
     "stock": 10
@@ -598,7 +598,7 @@
     "id": 68,
     "name": "Эспандер 7,5 и 10 кг, 2 шт.",
     "description": "Набор эспандеров для тренировок",
-    "price": 4700,
+    "price": 4690,
     "category": "sport",
     "image": "images/product-68.jpg",
     "stock": 10
@@ -607,7 +607,7 @@
     "id": 69,
     "name": "Эспандер 5 и 7,5 кг, 2 шт.",
     "description": "Набор эспандеров для тренировок",
-    "price": 2700,
+    "price": 2690,
     "category": "sport",
     "image": "images/product-69.jpg",
     "stock": 10
@@ -616,7 +616,7 @@
     "id": 70,
     "name": "Игрушка «Снежколеп»",
     "description": "Игрушка для лепки снежков",
-    "price": 1800,
+    "price": 1790,
     "category": "newyear",
     "image": "images/product-70.jpg",
     "stock": 10
@@ -625,7 +625,7 @@
     "id": 71,
     "name": "Силовая лента 10 кг",
     "description": "Эластичная лента для тренировок",
-    "price": 2500,
+    "price": 2490,
     "category": "sport",
     "image": "images/product-71.jpg",
     "stock": 10
@@ -634,7 +634,7 @@
     "id": 72,
     "name": "Силовая лента 20 кг",
     "description": "Эластичная лента для тренировок",
-    "price": 2500,
+    "price": 2490,
     "category": "sport",
     "image": "images/product-72.jpg",
     "stock": 10
@@ -643,7 +643,7 @@
     "id": 73,
     "name": "Силовая лента 15 кг",
     "description": "Эластичная лента для тренировок",
-    "price": 2500,
+    "price": 2490,
     "category": "sport",
     "image": "images/product-73.jpg",
     "stock": 10
@@ -652,7 +652,7 @@
     "id": 74,
     "name": "Лента силовая 20–30 кг",
     "description": "Эластичная силовая лента",
-    "price": 4200,
+    "price": 4190,
     "category": "sport",
     "image": "images/product-74.jpg",
     "stock": 10
@@ -661,7 +661,7 @@
     "id": 75,
     "name": "Лента силовая 30–40 кг",
     "description": "Эластичная силовая лента",
-    "price": 4900,
+    "price": 4890,
     "category": "sport",
     "image": "images/product-75.jpg",
     "stock": 10
@@ -670,7 +670,7 @@
     "id": 76,
     "name": "Мячик массажный двойной Relax Line",
     "description": "Массажный мячик для восстановления мышц",
-    "price": 2200,
+    "price": 2190,
     "category": "sport",
     "image": "images/product-76.jpg",
     "stock": 10
@@ -679,7 +679,7 @@
     "id": 77,
     "name": "Свеча ароматическая в стакане",
     "description": "Ароматическая свеча для дома",
-    "price": 3400,
+    "price": 3390,
     "category": "home",
     "image": "images/product-77.jpg",
     "stock": 10
@@ -688,7 +688,7 @@
     "id": 78,
     "name": "Спрей для декора окон и зеркал «Снег», 160 мл",
     "description": "Белый декоративный спрей, 40 г",
-    "price": 1800,
+    "price": 1790,
     "category": "newyear",
     "image": "images/product-78.jpg",
     "stock": 10
@@ -697,7 +697,7 @@
     "id": 79,
     "name": "Свеча новогодняя «Ёлочка», Снежное кружево, 7,5 см",
     "description": "Новогодняя декоративная свеча",
-    "price": 1400,
+    "price": 1390,
     "category": "newyear",
     "image": "images/product-79.jpg",
     "stock": 10
@@ -706,7 +706,7 @@
     "id": 80,
     "name": "Спрей для окон «Морозные узоры», 175 мл",
     "description": "Спрей для создания морозных узоров",
-    "price": 2300,
+    "price": 2290,
     "category": "newyear",
     "image": "images/product-80.jpg",
     "stock": 10

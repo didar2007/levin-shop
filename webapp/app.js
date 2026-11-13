@@ -6,8 +6,7 @@ const productGrid = document.getElementById("productGrid");
 const catalogTitle = document.getElementById("catalogTitle");
 
 // ВРЕМЕННЫЙ АДРЕС API
-const API_URL = "https://enquiry-representing-fighting-mesh.trycloudflare.com";
-
+const API_URL = "https://vincent-mrs-brass-gore.trycloudflare.com";
 // TELEGRAM MINI APP
 const tg = window.Telegram?.WebApp;
 
