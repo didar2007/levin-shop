@@ -27,6 +27,12 @@ function getTelegramInitData() {
 }
 
 const tg = getTelegramWebApp();
+console.log("LEVIN Telegram diagnostics:", {
+    telegramExists: !!window.Telegram,
+    webAppExists: !!window.Telegram?.WebApp,
+    initDataLength: window.Telegram?.WebApp?.initData?.length || 0,
+    platform: window.Telegram?.WebApp?.platform || "unknown"
+});
 
 if (tg) {
     tg.ready();
