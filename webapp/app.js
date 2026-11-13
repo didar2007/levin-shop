@@ -394,9 +394,13 @@ checkoutForm.addEventListener("submit", async function(event) {
         const result = await response.json();
 
         if (!response.ok || !result.success) {
-            throw new Error(
-                result.detail || "Не удалось оформить заказ"
-            );
+            console.error("Ответ Railway:", result);
+
+            const errorMessage = typeof result.detail === "string"
+                ? result.detail
+                : JSON.stringify(result.detail || result);
+
+            throw new Error(errorMessage);
         }
 
         cart = [];
