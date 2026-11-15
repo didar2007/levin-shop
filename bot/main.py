@@ -1,4 +1,3 @@
-
 import os
 import json
 import hmac
@@ -6,6 +5,9 @@ import hashlib
 import time
 import secrets
 import html
+import logging
+import threading
+from urllib.parse import parse_qsl
 
 import requests
 
@@ -14,31 +16,58 @@ from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel, Field
 
 from bot.config import BOT_TOKEN, ADMIN_ID
-
-app = FastAPI(title="LEVIN Shop API")
 from bot.telegram_admin import start_bot
 
 
-@app.on_event("startup")
-def startup_event():
-    start_bot()
+# ЛОГИ (видны в Railway → View logs)
+logging.basicConfig(
+    level=logging.INFO,
+    format="%(asctime)s [%(levelname)s] %(name)s: %(message)s"
+)
+logger = logging.getLogger("levin")
+
+
+app = FastAPI(title="LEVIN Shop API")
+
 
 # Разрешаем запросы от Mini App
 app.add_middleware(
     CORSMiddleware,
     allow_origins=["*"],
     allow_credentials=False,
-    allow_methods=["GET", "POST"],
+    allow_methods=["GET", "POST", "OPTIONS"],
     allow_headers=["*"],
 )
 
 
+# ЗАПУСК
+def _run_bot_safely():
+    try:
+        start_bot()
+    except Exception:
+        logger.exception("Бот администратора упал при запуске")
+
+
+@app.on_event("startup")
+def startup_event():
+    # Проверяем, что переменные заданы в Railway → Variables
+    if not BOT_TOKEN:
+        logger.error("BOT_TOKEN не задан! Добавьте его в Railway → Variables")
+    if not ADMIN_ID:
+        logger.error("ADMIN_ID не задан! Добавьте его в Railway → Variables")
+
+    # Бот запускается в фоне, чтобы не блокировать запуск сервера
+    threading.Thread(target=_run_bot_safely, daemon=True).start()
+    logger.info("LEVIN API запущен")
+
+
 # Проверка данных Telegram Mini App
-def verify_telegram_data(init_data: str):
+def verify_telegram_data(init_data: str) -> dict:
     if not init_data:
         raise HTTPException(401, "Telegram authorization required")
 
-    from urllib.parse import parse_qsl
+    if not BOT_TOKEN:
+        raise HTTPException(500, "Сервер не настроен: нет BOT_TOKEN")
 
     parsed = dict(parse_qsl(init_data))
 
@@ -72,7 +101,12 @@ def verify_telegram_data(init_data: str):
     if time.time() - auth_date > 86400:
         raise HTTPException(401, "Telegram session expired")
 
-    return json.loads(parsed["user"])
+    user_raw = parsed.get("user")
+
+    if not user_raw:
+        raise HTTPException(401, "No user in Telegram data")
+
+    return json.loads(user_raw)
 
 
 # Структура товара в заказе
@@ -100,13 +134,32 @@ class Order(BaseModel):
 # Проверка работы сервера
 @app.get("/health")
 def health():
-    return {"status": "ok", "shop": "LEVIN"}
+    return {
+        "status": "ok",
+        "shop": "LEVIN",
+        "bot_token_set": bool(BOT_TOKEN),
+        "admin_id_set": bool(ADMIN_ID),
+    }
 
 
 # Приём заказа
 @app.post("/api/orders")
 def create_order(order: Order):
+    try:
+        return _create_order(order)
 
+    except HTTPException as e:
+        logger.warning("Заказ отклонён: %s %s", e.status_code, e.detail)
+        raise
+
+    except Exception as e:
+        # Любая непредвиденная ошибка: пишем в логи и отдаём
+        # нормальный ответ, чтобы iPhone не показывал "Load failed"
+        logger.exception("Ошибка при оформлении заказа")
+        raise HTTPException(500, f"Ошибка сервера: {type(e).__name__}: {e}")
+
+
+def _create_order(order: Order):
     # Проверяем Telegram-пользователя
     user = verify_telegram_data(order.initData)
 
@@ -115,6 +168,9 @@ def create_order(order: Order):
 
     if order.contact_method not in ["Звонок", "WhatsApp"]:
         raise HTTPException(400, "Invalid contact method")
+
+    if not ADMIN_ID:
+        raise HTTPException(500, "Сервер не настроен: нет ADMIN_ID")
 
     # Формируем заказ
     order_number = secrets.token_hex(4).upper()
@@ -139,6 +195,8 @@ def create_order(order: Order):
 
     address = ", ".join(part for part in address_parts if part)
 
+    total_text = f"{total:,}".replace(",", " ")
+
     message = (
         "🎄 <b>LEVIN — НОВЫЙ ЗАКАЗ</b>\n\n"
         f"🧾 <b>Заказ №{order_number}</b>\n\n"
@@ -147,25 +205,38 @@ def create_order(order: Order):
         f"📍 <b>Адрес:</b> {html.escape(address)}\n"
         f"💬 <b>Связь:</b> {html.escape(order.contact_method)}\n\n"
         f"🛍 <b>ТОВАРЫ:</b>\n{products_text}\n\n"
-        f"💰 <b>ИТОГО: {total:,} ₸</b>\n\n"
+        f"💰 <b>ИТОГО: {total_text} ₸</b>\n\n"
         f"📝 <b>Комментарий:</b> "
         f"{html.escape(order.comment or 'Нет')}\n\n"
         f"Telegram ID покупателя: {user.get('id')}"
     )
 
     # Отправляем сообщение администратору
-    response = requests.post(
-        f"https://api.telegram.org/bot{BOT_TOKEN}/sendMessage",
-        json={
-            "chat_id": ADMIN_ID,
-            "text": message,
-            "parse_mode": "HTML"
-        },
-        timeout=15
-    )
+    try:
+        response = requests.post(
+            f"https://api.telegram.org/bot{BOT_TOKEN}/sendMessage",
+            json={
+                "chat_id": ADMIN_ID,
+                "text": message,
+                "parse_mode": "HTML"
+            },
+            timeout=15
+        )
+    except requests.RequestException as e:
+        logger.exception("Не удалось связаться с Telegram API")
+        raise HTTPException(502, f"Нет связи с Telegram: {type(e).__name__}")
 
     if not response.ok:
-        raise HTTPException(502, "Could not send order to administrator")
+        logger.error(
+            "Telegram не принял сообщение: %s %s",
+            response.status_code, response.text
+        )
+        raise HTTPException(
+            502,
+            f"Telegram не принял заказ: {response.status_code} {response.text[:200]}"
+        )
+
+    logger.info("Заказ %s отправлен, сумма %s ₸", order_number, total)
 
     return {
         "success": True,
