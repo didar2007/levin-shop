@@ -37,15 +37,6 @@
     "stock": 10
   },
   {
-    "id": 5,
-    "name": "Жидкое мыло Milana Selective, 1000 мл",
-    "description": "Аромат чёрной смородины, чайной розы и сандала",
-    "price": 2190,
-    "category": "home",
-    "image": "images/product-5.jpg",
-    "stock": 10
-  },
-  {
     "id": 6,
     "name": "Литая новогодняя ёлка «Снежное кружево», 25 см",
     "description": "Настольная декоративная ёлка",
@@ -136,15 +127,6 @@
     "stock": 10
   },
   {
-    "id": 16,
-    "name": "Новогодняя ёлка «Снежное кружево», 34,5 см",
-    "description": "Декоративная ёлка",
-    "price": 3390,
-    "category": "newyear",
-    "image": "images/product-16.jpg",
-    "stock": 10
-  },
-  {
     "id": 17,
     "name": "Стеклянный чайник 850-235, 1,1 л",
     "description": "Чайник из стекла",
@@ -205,15 +187,6 @@
     "price": 1090,
     "category": "newyear",
     "image": "images/product-23.jpg",
-    "stock": 10
-  },
-  {
-    "id": 24,
-    "name": "Влагозащищённый навесной замок, 50 × 140 мм",
-    "description": "Перфорированный корпус",
-    "price": 3990,
-    "category": "home",
-    "image": "images/product-24.jpg",
     "stock": 10
   },
   {
@@ -457,15 +430,6 @@
     "price": 4550,
     "category": "home",
     "image": "images/product-51.jpg",
-    "stock": 10
-  },
-  {
-    "id": 52,
-    "name": "Бумажная ёлка, 34,5 см",
-    "description": "Декоративная бумажная ёлка",
-    "price": 2590,
-    "category": "newyear",
-    "image": "images/product-52.jpg",
     "stock": 10
   },
   {
