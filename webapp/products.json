@@ -1,4 +1,3 @@
-
 [
   {
     "id": 1,
@@ -673,6 +672,231 @@
     "price": 2290,
     "category": "newyear",
     "image": "images/product-80.jpg",
+    "stock": 10
+  },
+  {
+    "id": 81,
+    "name": "Бумага обёрточная, 70 × 100 см",
+    "description": "Новогодние дизайны для красивой упаковки подарков",
+    "price": 1490,
+    "category": "newyear",
+    "image": "images/product-81.jpg",
+    "stock": 10
+  },
+  {
+    "id": 82,
+    "name": "Украшение новогоднее блестящее «Снежинка»",
+    "description": "Для двери, окна или стены, с петелькой для подвеса",
+    "price": 1890,
+    "category": "newyear",
+    "image": "images/product-82.jpg",
+    "stock": 10
+  },
+  {
+    "id": 83,
+    "name": "Подсвечник «Ёлочка», синий, 8,3 × 8,3 × 13 см",
+    "description": "Стекло, элегантное украшение праздничного стола",
+    "price": 2990,
+    "category": "newyear",
+    "image": "images/product-83.jpg",
+    "stock": 10
+  },
+  {
+    "id": 84,
+    "name": "Подсвечник «Ёлочка», янтарный, 8,3 × 8,3 × 13 см",
+    "description": "Стекло, создаёт уютную атмосферу",
+    "price": 2990,
+    "category": "newyear",
+    "image": "images/product-84.jpg",
+    "stock": 10
+  },
+  {
+    "id": 85,
+    "name": "Украшение новогоднее «Колокольчик», 6,5 × 7 см",
+    "description": "Для ёлки, венка и праздничной композиции",
+    "price": 1540,
+    "category": "newyear",
+    "image": "images/product-85.jpg",
+    "stock": 10
+  },
+  {
+    "id": 86,
+    "name": "Шпиль на ёлку бархатный ажурный, зелёный",
+    "description": "Тонкие узоры и бархатная текстура",
+    "price": 2090,
+    "category": "newyear",
+    "image": "images/product-86.jpg",
+    "stock": 10
+  },
+  {
+    "id": 87,
+    "name": "Шпиль на ёлку бархатный, красный",
+    "description": "Завершающий штрих праздничного убранства",
+    "price": 2090,
+    "category": "newyear",
+    "image": "images/product-87.jpg",
+    "stock": 10
+  },
+  {
+    "id": 88,
+    "name": "Фигурка новогодняя «Дед Мороз на полке»",
+    "description": "Размер 5 × 10 × 4 см, длина ног 9 см",
+    "price": 2740,
+    "category": "newyear",
+    "image": "images/product-88.jpg",
+    "stock": 10
+  },
+  {
+    "id": 89,
+    "name": "Шпиль на ёлку бархатный, синий",
+    "description": "Завершающий штрих праздничного убранства",
+    "price": 2090,
+    "category": "newyear",
+    "image": "images/product-89.jpg",
+    "stock": 10
+  },
+  {
+    "id": 90,
+    "name": "Спрей для декора «Блёстки», 175 мл",
+    "description": "Золото или серебро, держится несколько месяцев",
+    "price": 2090,
+    "category": "newyear",
+    "image": "images/product-90.jpg",
+    "stock": 10
+  },
+  {
+    "id": 91,
+    "name": "Шпиль на ёлку бархатный, зелёный",
+    "description": "Завершающий штрих праздничного убранства",
+    "price": 2090,
+    "category": "newyear",
+    "image": "images/product-91.jpg",
+    "stock": 10
+  },
+  {
+    "id": 92,
+    "name": "Декорация новогодняя «Поезд», 48 см",
+    "description": "Берёзовая фанера, вращающиеся колёса",
+    "price": 3499,
+    "category": "newyear",
+    "image": "images/product-92.jpg",
+    "stock": 10
+  },
+  {
+    "id": 93,
+    "name": "Плакат новогодний «С Новым Годом!», 66 × 16 см",
+    "description": "На дверь, стену или любую гладкую поверхность",
+    "price": 1440,
+    "category": "newyear",
+    "image": "images/product-93.jpg",
+    "stock": 10
+  },
+  {
+    "id": 94,
+    "name": "Шпиль на ёлку бархатный ажурный, красный, 23,5 см",
+    "description": "Тонкие узоры и бархатный материал",
+    "price": 2090,
+    "category": "newyear",
+    "image": "images/product-94.jpg",
+    "stock": 10
+  },
+  {
+    "id": 95,
+    "name": "Украшение ёлочное «Домик», 3 шт.",
+    "description": "Фигурки с блестящими деталями",
+    "price": 1540,
+    "category": "newyear",
+    "image": "images/product-95.jpg",
+    "stock": 10
+  },
+  {
+    "id": 96,
+    "name": "Набор бархатных ёлочных шаров, 6 шт., 6 см",
+    "description": "Насыщенный цвет и приятная текстура",
+    "price": 3290,
+    "category": "newyear",
+    "image": "images/product-96.jpg",
+    "stock": 10
+  },
+  {
+    "id": 97,
+    "name": "Кружка новогодняя с золотым узором",
+    "description": "Для какао и горячих напитков",
+    "price": 3690,
+    "category": "newyear",
+    "image": "images/product-97.jpg",
+    "stock": 10
+  },
+  {
+    "id": 98,
+    "name": "3D пазл «Новогодний домик»",
+    "description": "2 листа с деталями, палочка и инструкция",
+    "price": 7390,
+    "category": "newyear",
+    "image": "images/product-98.jpg",
+    "stock": 10
+  },
+  {
+    "id": 99,
+    "name": "Декорация новогодняя в мешочке, 27 см",
+    "description": "Праздничная композиция с природными мотивами",
+    "price": 2650,
+    "category": "newyear",
+    "image": "images/product-99.jpg",
+    "stock": 10
+  },
+  {
+    "id": 100,
+    "name": "Декорация новогодняя «Подарочек», 9,7 × 9,7 × 12 см",
+    "description": "Для ёлки, полки или фотозоны",
+    "price": 1690,
+    "category": "newyear",
+    "image": "images/product-100.jpg",
+    "stock": 10
+  },
+  {
+    "id": 101,
+    "name": "Шар стеклянный новогодний «Белый медведь», 8 × 8 × 9,5 см",
+    "description": "Фигурка мишки и ёлочки внутри стеклянного шара",
+    "price": 2390,
+    "category": "newyear",
+    "image": "images/product-101.jpg",
+    "stock": 10
+  },
+  {
+    "id": 102,
+    "name": "Украшение ёлочное на клипсе «Цветок», 3 шт.",
+    "description": "Легко крепится на ветку, блестящий дизайн",
+    "price": 1890,
+    "category": "newyear",
+    "image": "images/product-102.jpg",
+    "stock": 10
+  },
+  {
+    "id": 103,
+    "name": "Шар стеклянный новогодний «Домик», 8 × 8 × 9,5 см",
+    "description": "Домик и ёлочки внутри стеклянного шара",
+    "price": 2390,
+    "category": "newyear",
+    "image": "images/product-103.jpg",
+    "stock": 10
+  },
+  {
+    "id": 104,
+    "name": "Шар стеклянный новогодний «Подарок», 8 × 8 × 9,5 см",
+    "description": "Ёлочки и подарок внутри, отличная идея для подарка",
+    "price": 2390,
+    "category": "newyear",
+    "image": "images/product-104.jpg",
+    "stock": 10
+  },
+  {
+    "id": 105,
+    "name": "Новогодняя музыкальная шкатулка «Карусель»",
+    "description": "Заводной механизм, мелодия новогоднего чуда",
+    "price": 8990,
+    "category": "newyear",
+    "image": "images/product-105.jpg",
     "stock": 10
   }
 ]
